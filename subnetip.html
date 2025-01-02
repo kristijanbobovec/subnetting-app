@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="styles/style.css">
+
+
+    <title>Subnetiranje aplikacija - pomoću subnet maske i ip adrese</title>
+</head>
+<body>
+
+    <main class="container">
+        
+
+        <section class="application gap-sm">
+            <header class="application-header flex-container flex-space-between">
+                <div class="headings">
+                    <h1 class="heading-1 color-white">IP Adresa Subnet maska</h1>
+                    <h2 class="heading-2 color-white">Putem proizvoljne valjane IP adrese i maske izračunavanje detalja.</h2>
+                </div>
+
+                <div class="menu" id="menu">
+                    <button class="btn" id="nav_menu">
+                        <span class="small-text">IP Adresa + Subnet Maska</span>
+                        <span class="btn-icon">
+                            <img src="assets/icons/arr-down.svg" alt="">
+                        </span>
+                    </button>
+                    <nav class="navigation" id="menu_colapse">
+                        <ul class="navigation__list">
+                            <li class="navigation__item"></li><a href="index.html" class="navigation__link small-text">Neodabrano</a></li>
+                            <li class="navigation__item"></li><a href="pretvaranje.html" class="navigation__link small-text">Pretvaranje adrese</a></li>
+                            <li class="navigation__item"></li><a href="" class="navigation__link small-text">IP Adresa + Subnet Maska</a></li>
+                            <li class="navigation__item"></li><a href="brojuredjaja.html" class="navigation__link small-text">Broj uređaja</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="application-content">
+                <form action="" class="application__form" id="form" data-function="subnet-details">
+                    <label for="first_input" class="color-white normal-text">Unesite adresu i CIDR mreže: </label>
+                    <div class="application__form__content">
+                        <div class="application__input__group">
+                            <textarea name="first_input" id="first_input" class="application__form__input" rows="1" required maxlength="3"></textarea>
+                            <span class="dot">
+                                <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="3" height="3" fill="#05668D" fill-opacity="0.2"/>
+                                    <rect x="0.75" y="0.75" width="1.5" height="1.5" stroke="#427AA1" stroke-opacity="0.2" stroke-width="1.5"/>
+                                </svg>                            
+                            </span>
+                        </div>
+                        <div class="application__input__group">
+                            <textarea name="first_input" id="" class="application__form__input" rows="1" required maxlength="3"></textarea>
+                            <span class="dot">
+                                <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="3" height="3" fill="#05668D" fill-opacity="0.2"/>
+                                    <rect x="0.75" y="0.75" width="1.5" height="1.5" stroke="#427AA1" stroke-opacity="0.2" stroke-width="1.5"/>
+                                </svg>                            
+                            </span>
+                        </div>
+                        <div class="application__input__group">
+                            <textarea name="first_input" id="" class="application__form__input" rows="1" required maxlength="3"></textarea>
+                            <span class="dot">
+                                <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="3" height="3" fill="#05668D" fill-opacity="0.2"/>
+                                    <rect x="0.75" y="0.75" width="1.5" height="1.5" stroke="#427AA1" stroke-opacity="0.2" stroke-width="1.5"/>
+                                </svg>                            
+                            </span>
+                        </div>
+                        <div class="application__input__group">
+                            <textarea name="first_input" id="" class="application__form__input" rows="1" required maxlength="3"></textarea>
+                        </div>
+                        <div class="application__input__group">
+                            <span class="application__input__group__divider"><svg width="13" height="29" viewBox="0 0 13 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 27.5L11.5 1" stroke="#05668D" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/></svg>
+                            </span>
+                            <textarea name="first_input" class="application__form__input" rows="1" required maxlength="2" data-type="CIDR" id="cidr-field"></textarea>
+                        </div>
+                        <span class="hide" id="error_indicator">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.04116 16.6479C0.145921 16.6479 -0.248721 15.9977 0.163418 15.203L7.74959 0.595921C8.16173 -0.198711 8.83729 -0.198711 9.24991 0.595921L16.8361 15.203C17.2492 15.9977 16.8541 16.6479 15.9583 16.6479H1.04116Z" fill="#BF4600"/>
+                                <path d="M7.4157 4.81835C7.4157 4.18556 7.88276 3.79383 8.50048 3.79383C9.10362 3.79383 9.58575 4.20062 9.58575 4.81835V10.6204C9.58575 11.2381 9.10362 11.6449 8.50048 11.6449C7.88276 11.6449 7.4157 11.2527 7.4157 10.6204V4.81835ZM7.32481 13.709C7.32533 13.3974 7.44937 13.0987 7.66976 12.8784C7.89014 12.6581 8.18888 12.5342 8.50048 12.5338C8.81208 12.5342 9.11082 12.6581 9.3312 12.8784C9.55158 13.0987 9.67563 13.3974 9.67614 13.709C9.67576 14.0207 9.55177 14.3195 9.33137 14.5399C9.11098 14.7603 8.81217 14.8843 8.50048 14.8846C8.18879 14.8843 7.88998 14.7603 7.66958 14.5399C7.44919 14.3195 7.3252 14.0207 7.32481 13.709Z" fill="#231F20"/>
+                                </svg>                                
+                        </span>
+                    </div>
+                    <p class="small-text extrabold color-success">Napomena. Unosite adrese u dekatskom obliku.</p>
+                    <p class="small-text extrabold color-error hide" id="error_message"></p>
+                </form>
+            </div>
+
+            <div class="application__details">
+                <h2 class="heading-2 color-white">Detalji:</h2>
+                <div class="cards">
+                    <div class="card">
+                        <p class="normal-text color-white">Adresa mreže:</p>
+                        <p class="code-text font-medium color-white" id="adresa-mreze">N/A</p>
+                    </div>
+                    <div class="card">
+                        <p class="normal-text color-white">Subnet maska:</p>
+                        <p class="code-text font-medium color-white" id="subnet-mask">N/A</p>
+                    </div>
+                    <div class="card">
+                        <p class="normal-text color-white">Prva korisna IP adresa:</p>
+                        <p class="code-text font-medium color-white" id="prva-korisna">N/A</p>
+                    </div>
+                    <div class="card">
+                        <p class="normal-text color-white">Zadnja korisna IP adresa:</p>
+                        <p class="code-text font-medium color-white" id="zadnja-korsina">N/A</p>
+                    </div>
+                    <div class="card">
+                        <p class="normal-text color-white">Broadcast adresa:</p>
+                        <p class="code-text font-medium color-white" id="broadcast-adresa">N/A</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="dummy-div">
+                <img src="assets/images/networks.png" alt=""  class="img dummy-img dummy-img-2a"/>
+            </div>
+        </section>
+
+
+    </main>
+    
+
+    <footer class="footer">
+        <p class="small-text">Aplikacija za subnetiranje, izradio <span class="color-primary">Kristijan Bobovec.</span></p>
+        <p class="small-text">2024© Sva prava pridržana</p>
+    </footer>
+    
+
+    <script src="js-app/nav_menu.js"></script>
+    <script src="js-app/form_handler-subnetip.js"></script>
+</body>
+</html>
