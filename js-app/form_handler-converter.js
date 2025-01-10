@@ -43,7 +43,7 @@ form_inputs.forEach((el) => {
 // Is valid number for decimal ip address.
 function is_valid_decimal(value) {
     let value_ = parseInt(value)
-    if (value_ < 256 && value >= 0) return true
+    if (value_ < 256 && value >= 0 && value.length < 4) return true
     return false;
 }
 
@@ -111,6 +111,7 @@ function convertValues() {
         else {
             is_decimal = true
             let decimalno = to_decimal(el.value)
+            console.log("u decimalno: " + decimalno)
             if (konverzije < 3) {
                 converted_string += decimalno + "."
             }else {
